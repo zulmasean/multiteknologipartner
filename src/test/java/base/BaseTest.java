@@ -10,7 +10,7 @@ public class BaseTest {
     @BeforeAll
     static void setup() {
 
-        RestAssured.baseURI = "https://api.multiteknologipartner.com";
+        RestAssured.baseURI = "https://multiteknologipartner2.free.beeceptor.com";
 
         token = AuthHelper.getToken();
     }

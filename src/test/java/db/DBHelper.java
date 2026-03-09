@@ -12,9 +12,9 @@ public class DBHelper {
         try {
 
             Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/orderdb",
-                    "user",
-                    "password");
+                    "jdbc:postgresql://localhost:5432/postgres",
+                    "postgres",
+                    "admin");
 
             Statement stmt = conn.createStatement();
 

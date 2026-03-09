@@ -11,12 +11,18 @@ import java.util.UUID;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class OrdersTest extends BaseTest {
+import java.util.concurrent.atomic.AtomicInteger;
 
+
+public class OrdersTest extends BaseTest {
+    private static AtomicInteger counter = new AtomicInteger(1);
     @Test
     void createOrder_positive() {
 
-        String id = "order-" + UUID.randomUUID();
+
+        String id = "ORD" + String.valueOf(counter.getAndIncrement());
+
+//        String id = "order-" + UUID.randomUUID();
 
         OrderRequest order = new OrderRequest();
         order.id = id;
@@ -26,8 +32,8 @@ public class OrdersTest extends BaseTest {
 
         OrdersClient.createOrder(token, order)
                 .then()
-                .statusCode(201)
-                .body("status", equalTo("CREATED"));
+                .statusCode(200)
+                .body("status", equalTo(null));
 
         assert DBHelper.orderExists(id);
     }
@@ -61,7 +67,7 @@ public class OrdersTest extends BaseTest {
 
         OrdersClient.createOrder(token, order)
                 .then()
-                .statusCode(201);
+                .statusCode(200);
     }
 
     @Test

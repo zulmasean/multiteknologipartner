@@ -17,7 +17,7 @@ public class AuthHelper {
                         }
                         """)
                 .when()
-                        .post("/api/auth/login");
+                        .post("/api/orders");
 
         return response.jsonPath().getString("token");
     }
